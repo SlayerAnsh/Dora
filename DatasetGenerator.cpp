@@ -46,6 +46,18 @@ int main(){
         }
     }
 
+    //file to store matrix
+    char mfilename[] = "C:/Users/Anshu/Desktop/CP/DATASET/matrix-02-07-2020.txt";
+    ofstream matfile(mfilename);
+
+    for(int i=0;i<24;i++){
+        for(int j=0;j<25;j++){
+            matfile<<matrix[j][i]<<" ";
+        }
+        matfile<<matrix[24][i]<<"\n";
+    }
+
+    matfile.close();
 
     //change the path accordingly
     //dont cahnge the format of file name
