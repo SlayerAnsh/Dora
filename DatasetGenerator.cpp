@@ -1,30 +1,78 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long int
 
 
 
 
 int main(){
 
-    freopen("input1.txt","r",stdin);
-    freopen("output.txt","w",stdout);
+    /*freopen("input1.txt","r",stdin);
+    freopen("output.txt","w",stdout);*/
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
+    
+    int value;
 
-    char c;
-    for(int i=0;i<4;i++){
-        cin.get(c);
-        if(c=='\n')
-            continue;
-        c = c-32;
-        cin.ignore();
-        cout<<"D-";
-        cout<<c<<"-";
-        cout<<setw(2)<<setfill('0')<<i<<"-30-06-2020\n";        
+    //matrix to store interactions
+    //row denote time of day and column denote id of person
+    char matrix[25][24];
+
+    //initialising matrix with '0'
+    //its used to determine a person is free or not when assigning
+    for(int i=0;i<24;i++){
+        for(int j=0;j<25;j++){
+            matrix[j][i]='0';
+        }
     }
 
+    //randomising rand() function by giving time as seed
+    srand(time(0));
+
+    //matric generator
+    for(int i=0;i<24;i++){
+        for(int j=0;j<25;j++){
+            value = rand()%25;
+
+            //if both are free then only we can assign them
+            //also a person cant meet himself
+            if((matrix[j][i]=='0')&&(matrix[value][i]=='0')){
+                if(value == j)
+                    continue;
+                matrix[j][i] = value + 65;
+                matrix[value][i] = j + 65;
+            }
+        }
+    }
+
+
+    //change the path accordingly
+    //dont cahnge the format of file name
+    //you can change date accordind to you
+    char filename[51] = "C:/Users/Anshu/Desktop/CP/DATASET/A-02-07-2020.txt";
+    filename[50] = '\0';
+
+    //creating separate files for each id
+    //writing the corresponding matrix data in file
+    for(int i=0;i<25;i++){
+        filename[34]=i+65;
+        ofstream createfile(filename);
+        for(int j=0;j<24;j++){
+            if(matrix[i][j]=='0')
+                continue;
+            createfile<<char(i+65)<<'-'<<matrix[i][j];
+
+            //change the date according to the file name manually
+            //automisation with minimum use of space will be added in future
+            createfile<<'-'<<setw(2)<<setfill('0')<<j<<"-02-07-2020\n";
+        }
+        
+        createfile.close();
+    }
+    
+
+    
     return 0;
 }
 
