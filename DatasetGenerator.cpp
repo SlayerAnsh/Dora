@@ -29,11 +29,17 @@ int main(){
 
     //randomising rand() function by giving time as seed
     srand(time(0));
+    int garbage;
 
     //matric generator
     for(int i=0;i<24;i++){
         for(int j=0;j<25;j++){
             value = rand()%25;
+
+            //decrease the modulo to increase interactions probability
+            garbage = rand()%10;
+            if(garbage)
+                continue;
 
             //if both are free then only we can assign them
             //also a person cant meet himself
@@ -51,7 +57,7 @@ int main(){
     ofstream matfile(mfilename);
 
     for(int i=0;i<24;i++){
-        for(int j=0;j<25;j++){
+        for(int j=0;j<24;j++){
             matfile<<matrix[j][i]<<" ";
         }
         matfile<<matrix[24][i]<<"\n";
