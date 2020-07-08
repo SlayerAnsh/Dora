@@ -1,0 +1,2 @@
+*.txt
+!Dataset/*.txt
