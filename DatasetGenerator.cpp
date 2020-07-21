@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 using namespace std;
 
 
@@ -6,11 +8,11 @@ using namespace std;
 
 int main(){
 
-    /*freopen("input1.txt","r",stdin);
-    freopen("output.txt","w",stdout);*/
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+
+    mkdir("Dataset",0777);
     
     
     int value;
@@ -36,8 +38,8 @@ int main(){
         for(int j=0;j<25;j++){
             value = rand()%25;
 
-            //decrease the modulo to increase interactions probability
-            garbage = rand()%10;
+            //decrease the modulo in garbage to increase interactions probability
+            garbage = rand()%20;
             if(garbage)
                 continue;
 
@@ -53,40 +55,52 @@ int main(){
     }
 
     //file to store matrix
-    char mfilename[] = "C:/Users/Anshu/Desktop/CP/DATASET/matrix-02-07-2020.txt";
-    ofstream matfile(mfilename);
+    //change date to ur choice
+    string filepath = "Dataset/matrix";
+    string date = "02-07-2020";
+    string filename = "matrix-" + date + ".txt";
+    mkdir(filepath.c_str(),0777);
+    ofstream file;
+    file.open(filepath + "/" + filename);
 
     for(int i=0;i<24;i++){
         for(int j=0;j<24;j++){
-            matfile<<matrix[j][i]<<" ";
+            file<<matrix[j][i]<<" ";
         }
-        matfile<<matrix[24][i]<<"\n";
+        file<<matrix[24][i]<<"\n";
     }
 
-    matfile.close();
+    file.close();
 
     //change the path accordingly
     //dont cahnge the format of file name
     //you can change date accordind to you
-    char filename[51] = "C:/Users/Anshu/Desktop/CP/DATASET/A-02-07-2020.txt";
-    filename[50] = '\0';
+    filepath.clear();
+    filename.clear();
+    filepath = "Dataset/A";
+    filename = "A-" + date + ".txt";
+
+
+   
 
     //creating separate files for each id
     //writing the corresponding matrix data in file
     for(int i=0;i<25;i++){
-        filename[34]=i+65;
-        ofstream createfile(filename);
+        filepath[8]=i+65;
+        filename[0]=i+65;
+        mkdir(filepath.c_str(),0777);
+        file.open(filepath + "/" + filename);
         for(int j=0;j<24;j++){
             if(matrix[i][j]=='0')
                 continue;
-            createfile<<char(i+65)<<'-'<<matrix[i][j];
+            file<<char(i+65)<<'-'<<matrix[i][j];
 
             //change the date according to the file name manually
             //automisation with minimum use of space will be added in future
-            createfile<<'-'<<setw(2)<<setfill('0')<<j<<"-02-07-2020\n";
+            file<<'-'<<setw(2)<<setfill('0')<<j<<"-"<<date<<"\n";
         }
         
-        createfile.close();
+        file.close();
     }
     
 

@@ -1,2 +1,5 @@
 *.txt
-!Dataset/*.txt
+!Dataset/**/*.txt
+MAIN
+DatasetGenerator
+TestCaseSolver

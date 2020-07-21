@@ -6,7 +6,6 @@ using namespace std;
 int main(){
 
     //comment if using console for input output
-    freopen("input1.txt","r",stdin);
     freopen("output.txt","w",stdout);
 
     
@@ -15,12 +14,10 @@ int main(){
     
     //opening matrix file present in database
     ifstream file;
-    file.open("matrix-02-07-2020.txt");
+    file.open("Dataset/matrix/matrix-02-07-2020.txt");
 
 
-    // for(int i=0;i<25;i++)
-    //     cout<<char(i+65)<<" ";
-    // cout<<"\n\n";
+    
 
     char matrix[24][25];
     for(int i=0;i<24;i++){
@@ -29,19 +26,42 @@ int main(){
         }
     }
 
+    // for(int i = 0;i<24;i++){
+    // 	for(int j=0;j<25;j++)
+    // 		cout<<matrix[i][j]<<" ";
+    // 	cout<<"\n";
+    // }
+
+    // cout<<"\n\n";
+
+    cout<<"  |";
+
+    for(int i=0;i<25;i++)
+        cout<<char(i+65)<<"|";
+    cout<<"\n";
+
     //change value according to test case
-    char name = 'W';
-    int time = 10;
+    char name = 'C';
+    int time = 0;
 
     set<char> infected;
     infected.insert(name);
     for(int i = time;i<24;i++){
+    	cout<<setw(2)<<setfill('0')<<i<<"|";
         for(int j=0;j<25;j++){
-            if(infected.count(matrix[i][j])){
-                if(!infected.count(j+65))
-                    cout<<char(j+65)<<" ";
-                infected.insert(char(j+65));
+            if(infected.count(char(j+65))){
+                if(!infected.count(matrix[i][j])&&(matrix[i][j]!='0')){
+                    cout<<matrix[i][j];
+                	infected.insert(matrix[i][j]);
+                }
+                else
+            		cout<<"_";
+                
             }
+            else
+            	cout<<"_";
+            
+            cout<<"|";
         }
         cout<<"\n";
     }
