@@ -1,25 +1,30 @@
-# PROJECT DORA
+# DORA
+Once Again on Exploring Adventures
 
-Project Dora lets you find the people you have interacted for a definite number of past days, and hence lets you find the people who might be infected.
-The project used COVID-19 as a problem statement, and tried to find the possible infected people.
-The algorithm uses graphs, file handling and C++ as programming language.
+Dora - the explorer , as the name suggests, is an exploring algorithm. In the Project, we have designed an algorithm which helps government officers and other public officials to quickly track the number and details of the individuals needed to be quarantined as the risk of them being infected is very high.
 
-The algo first picks up the file of already infected person, then tries to find out the people whom he interacted with and finally the chain continues to find each of the possibly infected poeple.
+“ It should be noted here that this algorithm on its own is not enough to do so. We can implement this algorithm in apps like AROGYA SETU which collect data of your interactions. This Algorithm then can be performed on the data. ”
+
 
 ## PREREQUISITES
 C++ Compiler
 
 ## HOW TO RUN DORA
-First clone the project in your local machine with:
+1) First clone the project in your local machine with:
 ```
   git clone https://github.com/SlayerAnsh/Dora.git
 ```
 
-After cloning go to ```main.cpp``` file
+2) After cloning go to `main.cpp` file
   
-If you would like to run the file on new data set, first generate it through ```DatasetGenerator.cpp``` and then run the ```main.cpp``` file.
+If you would like to run the file on new data set, first generate it through `DatasetGenerator.cpp` and then run the `main.cpp` file.
   
-If you have your own algorithm and just want to verify it, this repo contains the file ```TestCaseSolver.cpp``` which can verify if your algorithm works correctly or not.
+If you have your own algorithm and just want to verify it, this repo contains the file `TestCaseSolver.cpp` which will give you solution of a particular test case which you can use to match with your solution.
 
+## MORE ABOUT DORA
+Dora is a very efficient algorithm which uses a DFS type of approach. The way it fetches data only when necessary and uses files from fetched data ( don't use unnecessary variables to store the data ) and also how it reduces the complexity of problems using sets and arrays makes it a really efficient algorithm.
+
+
+**Data produced at the end of algorithm ( MAIN.cpp ) is list of all possible individuals who needs to be quarantined because they have directly ( with the infected person ) or indirectly ( with the person who was in contact with infected person or the person who was in contact with the person who had contact with infected person ) contacted the infected person and possess risk of being infected.**
 
 
