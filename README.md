@@ -25,6 +25,6 @@ If you have your own algorithm and just want to verify it, this repo contains th
 Dora is a very efficient algorithm which uses a DFS type of approach. The way it fetches data only when necessary and uses files from fetched data ( don't use unnecessary variables to store the data ) and also how it reduces the complexity of problems using sets and arrays makes it a really efficient algorithm.
 
 
-**Data produced at the end of algorithm ( MAIN.cpp ) is list of all possible individuals who needs to be quarantined because they have directly ( with the infected person ) or indirectly ( with the person who was in contact with infected person or the person who was in contact with the person who had contact with infected person ) contacted the infected person and possess risk of being infected.**
+**Data produced at the end of algorithm ( MAIN.cpp ) is list of all possible individuals who needs to be quarantined because they have directly ( with the infected person ) or indirectly ( with the person who was in contact with infected person directly or indirectly) possess the risk of being infected.**
 
 
